@@ -11,6 +11,8 @@ public class Board2048 {
 
     public int[][] blocks;
 
+    private int[][] newBlocks;
+    private int[][] animations;
 
     //Constructor
 
@@ -59,11 +61,17 @@ public class Board2048 {
 
     }
 
+    public int[][] movement;
+
     public void moveDown() {
+
+        movement = new int[4][4];
+
         for (int i = 0; i < 4; i++) {
             int[] line = new int[] {blocks[0][i], blocks[1][i], blocks[2][i], blocks[3][i]};
             line = sortBlocks(line);
             line = combineBlocks(line);
+            line = sortBlocks(line);
             for (int j = 0; j < 4; j++) {
                 setBlockValue(j, i, line[j]);
             }
@@ -71,11 +79,21 @@ public class Board2048 {
         newBlock();
     }
 
+    public void moveDown2() {
+        for (int i = 0; i < 4; i++) {
+            int[] line = new int[] {blocks[0][i], blocks[1][i], blocks[2][i], blocks[3][i]};
+            for (int j = 2; j >= 0; j--) {
+
+            }
+        }
+    }
+
     public void moveLeft() {
         for (int i = 0; i < 4; i++) {
             int[] line = new int[] {blocks[i][3], blocks[i][2], blocks[i][1], blocks[i][0]};
             line = sortBlocks(line);
             line = combineBlocks(line);
+            line = sortBlocks(line);
             int j2 = 0;
             for (int j = 3; j > -1; j--) {
                 setBlockValue(i, j, line[j2]);
@@ -109,6 +127,7 @@ public class Board2048 {
             int[] line = blocks[i];
             line = sortBlocks(line);
             line = combineBlocks(line);
+            line = sortBlocks(line);
             for (int j = 0; j < 4; j++) {
                 setBlockValue(i, j, line[j]);
             }
@@ -121,6 +140,7 @@ public class Board2048 {
             int[] line = new int[] {blocks[3][i], blocks[2][i], blocks[1][i], blocks[0][i]};
             line = sortBlocks(line);
             line = combineBlocks(line);
+            line = sortBlocks(line);
             int j2 = 0;
             for (int j = 3; j > -1; j--) {
                 setBlockValue(j, i, line[j2]);

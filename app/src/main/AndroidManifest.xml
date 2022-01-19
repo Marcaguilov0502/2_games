@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.2Games">
         <activity
-            android:name=".MainActivity"
+            android:name="MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".PegSolitaire_activity"/>
         <activity android:name=".Activity2048"/>
+        <activity android:name=".WelcomeActivity"/>
+
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"

@@ -223,7 +223,7 @@ public class PegSolitaire_activity extends AppCompatActivity {
         for (int x = 0; x < 7; x++) {
             for (int y = 0; y < 7; y++) {
                 if (viewIds[x][y] == id) {
-                    return new int[]{x,y};
+                    return new int[]{x, y};
                 }
             }
         }
@@ -303,5 +303,4 @@ public class PegSolitaire_activity extends AppCompatActivity {
         }
 
     }
-
 }

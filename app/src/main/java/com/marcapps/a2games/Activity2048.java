@@ -1,16 +1,22 @@
 package com.marcapps.a2games;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.GridLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.gridlayout.widget.GridLayout;
 
 import com.marcapps.a2games.gameClasses.Board2048;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Activity2048 extends AppCompatActivity {
 
@@ -67,6 +73,50 @@ public class Activity2048 extends AppCompatActivity {
         });
         GridLayout layout = findViewById(R.id.grid2048);
     }
+
+
+    //Animations
+
+
+    private AnimatorSet animation;
+
+    public void animationReset() {
+        animation = new AnimatorSet();
+    }
+
+    public void addAnimation(int x, int y, int distance, String direction) {
+
+        ObjectAnimator anim;
+
+        if (direction == "up") {
+
+            anim = ObjectAnimator.ofFloat(views[x][y], "TranslationX", distance*(-75));
+
+        } else if (direction == "down") {
+
+            anim = ObjectAnimator.ofFloat(views[x][y], "TranslationX", distance*(75));
+
+        } else if (direction == "left") {
+
+            anim = ObjectAnimator.ofFloat(views[x][y], "TranslationY", distance*(-75));
+
+        } else if (direction == "right") {
+
+            anim = ObjectAnimator.ofFloat(views[x][y], "TranslationY", distance*(75));
+
+        } else {
+            throw new InputMismatchException();
+        }
+        anim.setDuration(5000);
+
+        animation.play(anim);
+
+    }
+
+    public void animationStart() {
+        animation.start();
+    }
+
 
     //Window
 
